@@ -94,22 +94,22 @@ public class RegionDatFileHelper {
 
     private static RegionType of(Long id, int level, String name) {
         if (id.equals(100000000000L)) return RegionType.Country;
-        if (level == 0) {
+        if (level == 1) {
             if (provinceLevelCity1.contains(name)) return RegionType.ProvinceLevelCity1;
             return RegionType.Province;
         }
-        if (level == 1) {
+        if (level == 2) {
             if ("直辖区".equalsIgnoreCase(name)) return RegionType.ProvinceLevelCity2;
             if ("直辖县".equalsIgnoreCase(name)) return RegionType.CityLevelDistrict;
             return RegionType.City;
         }
-        if (level == 2) return RegionType.District;
-        if (level == 3) {
+        if (level == 3) return RegionType.District;
+        if (level == 4) {
             if (name.matches("乡$")) return RegionType.Town;
             if (name.matches("镇$")) return RegionType.Town;
             return RegionType.PlatformL4;
         }
-        if (level == 4) return RegionType.Village;
+        if (level == 5) return RegionType.Village;
         return RegionType.Undefined;
     }
 

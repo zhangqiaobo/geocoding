@@ -1,20 +1,16 @@
 package org.bitlap.geocoding.region.util;
 
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.sql.Statement;
+import java.sql.*;
 
 public class JdbcUtil {
 
     private static final String driver_class = "com.mysql.cj.jdbc.Driver"; // com.mysql.jdbc.Driver
 
-    private static final String db_url = "jdbc:mysql://localhost:3306/cnarea";
+    private static final String db_url = "jdbc:mysql://localhost:3306/yfb";
 
     private static final String db_userid = "root";
 
-    private static final String db_password = "12345678";
+    private static final String db_password = "root";
 
     public static Connection getConnection() {
         Connection conn = null;

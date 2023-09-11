@@ -15,12 +15,12 @@ import org.bitlap.geocoding.region.util.OutUtil;
 public class RegionSqlHelper {
 
     private static final String sqlFindAllProvinces = "select `level`, area_code as id, parent_code as parentId, "
-            + "`name` as `name`, short_name as shortName, merger_name as `alias`, zip_code as zip "
-            + "from cnarea_2020 where parent_code = 0 order by area_code";
+            + "`name` as `name`, short_name as shortName, short_name as `alias`, merger_name as `merger_name`, zip_code as zip "
+            + "from cnarea_2023 where parent_code = 0  order by area_code";
 
     private static final String sqlFindByProvince = "select `level`, area_code as id, parent_code as parentId, "
-            + "`name` as `name`, short_name as shortName, merger_name as `alias`, zip_code as zip "
-            + "from cnarea_2020 where merger_name like ? order by `level`, parent_code, area_code";
+            + "`name` as `name`, short_name as shortName, merger_name as `merger_name`, short_name as `alias`, zip_code as zip "
+            + "from cnarea_2023 where merger_name like ?  order by `level`, parent_code, area_code";
 
     public static List<RegionEntity> findProvinces(Connection conn) {
         PreparedStatement pstmt = null;
@@ -55,7 +55,7 @@ public class RegionSqlHelper {
         }
         return Lists.newArrayList();
     }
-    
+
     private static List<RegionEntity> convert(ResultSet rs) throws SQLException {
         List<RegionEntity> list = Lists.newArrayList();
         while (rs != null && rs.next()) {
